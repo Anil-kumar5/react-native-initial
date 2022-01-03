@@ -25,20 +25,28 @@ import Scrollviews from './container/ScrollView';
 import Sectionslist from './container/Sectionslist';
 import TabNavContainer from './container/tabnav/TabNavContainer';
 import { Store } from './redux/store';
+import {ApolloClient,InMemoryCache,ApolloProvider } from '@apollo/client';
+import DisplayData from './container/DisplayData';
 const App = () => {
-  React.useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(resp => console.log(resp.json(),'response'))
- },[])
+  const client = new ApolloClient({
+    cache : new InMemoryCache() ,
+    uri  :"https://learn.hasura.io/graphql",
+  })
+ 
   return (
-    <>        
-   {/* <Initial/> */}
+  //  <ApolloProvider client = {client}>
+  //    <DisplayData/>
+  //  </ApolloProvider>
+    <Images/>
+  );
+};
+export default App;
+{/* <Initial/> */}
    {/* <Scrollviews/> */}
    {/* <Flatlist/> */}
     {/* <Sectionslist/> */}
     {/* <Input/> */}
     {/* <ModalFile/> */}
-    {/* <Images/> */}
     {/* <CustomButtonUsage1/> */}
     {/* <CustomButtonUsage2/> */}
   {/* <NavContainer/> */}
@@ -53,8 +61,9 @@ const App = () => {
 {/* <AsyncStorageCo/> */}
 {/* <AsyncStorageAdva/> */}
 {/* <GetMap/> */}
-<Mapsss/>
-    </>
-  );
-};
-export default App;
+{/* <Mapsss/> */}
+
+// React.useEffect(() => {
+//   fetch('https://jsonplaceholder.typicode.com/users')
+//   .then(resp => console.log(resp.json(),'response'))
+// },[])
